@@ -2128,15 +2128,4 @@ function openSettings() {
     window.location.href =
         "settings.html";
 
-}const workerRates = {
-
-    Ahad:
-        getSettings().workerRates.Ahad,
-
-    Adeel:
-        getSettings().workerRates.Adeel,
-
-    Bilal:
-        getSettings().workerRates.Bilal
-
-};
+}
