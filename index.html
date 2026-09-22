@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Billing Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="app-header">
+
+    <div>
+
+        <h1>Billing Dashboard</h1>
+
+        <p>Customer & Worker Management</p>
+
+    </div>
+
+    <div class="status">
+        ● Local Data
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+    <!-- HEADING -->
+
+    <div class="page-heading">
+
+        <div>
+
+            <h2>Business Overview</h2>
+
+            <p id="dashboardMonth">
+                Monthly business summary
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- QUICK ACTIONS -->
+
+    <section class="quick-actions">
+
+        <button
+            onclick="openCustomerBills()"
+            class="quick-btn"
+        >
+            👤 New Customer Bill
+        </button>
+
+
+        <button
+            onclick="openWorkers()"
+            class="quick-btn"
+        >
+            👷 Labour Entry
+        </button>
+
+    </section>
+
+
+
+    <!-- CUSTOMER STATS -->
+
+    <section class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🧾
+            </div>
+
+            <div>
+
+                <span>Total Customer Bills</span>
+
+                <strong id="totalCustomerBills">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                📏
+            </div>
+
+            <div>
+
+                <span>Total Feet</span>
+
+                <strong id="totalCustomerFeet">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                💰
+            </div>
+
+            <div>
+
+                <span>Total Sales</span>
+
+                <strong id="totalSales">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ✅
+            </div>
+
+            <div>
+
+                <span>Received</span>
+
+                <strong id="totalReceived">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ⏳
+            </div>
+
+            <div>
+
+                <span>Customer Pending</span>
+
+                <strong id="totalPending">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                👷
+            </div>
+
+            <div>
+
+                <span>Total Labour</span>
+
+                <strong id="totalLabour">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- WORKER CARDS -->
+
+    <section class="bill-box">
+
+        <div class="box-title">
+
+            <div>
+
+                <h3>Worker Summary</h3>
+
+                <p>
+                    Current labour totals
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="worker-dashboard-grid">
+
+
+            <div class="dashboard-worker">
+
+                <h3>Ahad</h3>
+
+                <p>Rs. 8 / foot</p>
+
+                <strong id="dashboardAhad">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+
+
+            <div class="dashboard-worker">
+
+                <h3>Adeel</h3>
+
+                <p>Rs. 10 / foot</p>
+
+                <strong id="dashboardAdeel">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+
+
+            <div class="dashboard-worker">
+
+                <h3>Bilal</h3>
+
+                <p>Rs. 14 / foot</p>
+
+                <strong id="dashboardBilal">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- PENDING -->
+
+    <section class="bill-box">
+
+        <div class="box-title">
+
+            <div>
+
+                <h3>Pending Overview</h3>
+
+                <p>
+                    Amounts that still need to be received/paid
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="pending-grid">
+
+
+            <div class="pending-card">
+
+                <span>Customer Pending</span>
+
+                <strong id="dashboardCustomerPending">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+
+
+            <div class="pending-card">
+
+                <span>Labour Pending</span>
+
+                <strong id="dashboardLabourPending">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- NAVIGATION -->
+
+    <section class="bill-box">
+
+        <div class="box-title">
+
+            <div>
+
+                <h3>Management</h3>
+
+                <p>
+                    Open different sections
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="management-grid">
+
+
+            <button
+                onclick="openCustomerBills()"
+                class="management-btn"
+            >
+                👤 Customer Bills
+            </button>
+
+
+            <button
+                onclick="openWorkers()"
+                class="management-btn"
+            >
+                👷 Labour / Workers
+            </button>
+
+
+            <button
+                onclick="alert('Reports module will be added soon.')"
+                class="management-btn"
+            >
+                📊 Reports
+            </button>
+
+
+            <button
+                onclick="alert('Settings module will be added soon.')"
+                class="management-btn"
+            >
+                ⚙️ Settings
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    Billing Management System
+
+</footer>
+
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html><button
+    onclick="alert('Reports module will be added soon.')"
+    class="management-btn"
+>
+    📊 Reports
+</button><button
+    onclick="openPayments()"
+    class="management-btn"
+>
+    💰 Payments
+</button><button
+    onclick="alert('Settings module will be added soon.')"
+    class="management-btn"
+>
+    ⚙️ Settings
+</button>

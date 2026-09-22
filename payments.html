@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Payments</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="app-header">
+
+    <div>
+
+        <h1>Billing App</h1>
+
+        <p>Customer & Worker Management</p>
+
+    </div>
+
+    <div class="status">
+        ● Local Data
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+    <div class="page-heading">
+
+        <div>
+
+            <h2>Payments</h2>
+
+            <p>Customer receipts & labour cash out</p>
+
+        </div>
+
+        <button
+            class="back-btn"
+            onclick="goDashboard()"
+        >
+            ← Dashboard
+        </button>
+
+    </div>
+
+
+
+    <!-- CUSTOMER PAYMENT -->
+
+    <section class="bill-box">
+
+        <div class="box-title">
+
+            <div>
+
+                <h3>Customer Payment</h3>
+
+                <p>
+                    Receive payment from customer
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+            <div class="form-group">
+
+                <label>Select Customer Bill</label>
+
+                <select
+                    id="paymentBill"
+                    onchange="showBillPaymentInfo()"
+                >
+
+                    <option value="">
+                        Select Bill
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>Customer</label>
+
+                <input
+                    type="text"
+                    id="paymentCustomer"
+                    readonly
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>Bill Total</label>
+
+                <input
+                    type="number"
+                    id="paymentBillTotal"
+                    readonly
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>Already Paid</label>
+
+                <input
+                    type="number"
+                    id="paymentAlreadyPaid"
+                    readonly
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>Current Pending</label>
+
+                <input
+                    type="number"
+                    id="paymentCurrentPending"
+                    readonly
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>New Payment</label>
+
+                <input
+                    type="number"
+                    id="newCustomerPayment"
+                    placeholder="Enter amount"
+                    min="0"
+                >
+
+            </div>
+
+
+        </div>
+
+
+        <div class="bill-summary">
+
+
+            <div>
+
+                <span>Bill</span>
+
+                <strong id="paymentSummaryBill">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>Already Paid</span>
+
+                <strong id="paymentSummaryPaid">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>New Payment</span>
+
+                <strong id="paymentSummaryNew">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>Remaining</span>
+
+                <strong id="paymentSummaryPending">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="form-actions">
+
+            <button
+                class="save-btn"
+                onclick="receiveCustomerPayment()"
+            >
+                💰 Receive Payment
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- LABOUR PAYMENT -->
+
+    <section class="bill-box">
+
+        <div class="box-title">
+
+            <div>
+
+                <h3>Labour Cash Out</h3>
+
+                <p>
+                    Pay worker against labour
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+            <div class="form-group">
+
+                <label>Select Labour Record</label>
+
+                <select
+                    id="labourPaymentRecord"
+                    onchange="showLabourPaymentInfo()"
+                >
+
+                    <option value="">
+                        Select Labour Record
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>Worker</label>
+
+                <input
+                    type="text"
+                    id="labourPaymentWorker"
+                    readonly
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>Customer</label>
+
+                <input
+                    type="text"
+                    id="labourPaymentCustomer"
+                    readonly
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>Total Labour</label>
+
+                <input
+                    type="number"
+                    id="labourPaymentTotal"
+                    readonly
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>Already Paid</label>
+
+                <input
+                    type="number"
+                    id="labourAlreadyPaid"
+                    readonly
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>Current Pending</label>
+
+                <input
+                    type="number"
+                    id="labourCurrentPending"
+                    readonly
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>New Cash Out</label>
+
+                <input
+                    type="number"
+                    id="newLabourPayment"
+                    placeholder="Enter amount"
+                    min="0"
+                >
+
+            </div>
+
+
+        </div>
+
+
+        <div class="form-actions">
+
+            <button
+                class="save-btn"
+                onclick="payLabour()"
+            >
+                💵 Save Labour Cash Out
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- PAYMENT HISTORY -->
+
+    <section class="bill-box">
+
+        <div class="box-title">
+
+            <div>
+
+                <h3>Payment History</h3>
+
+                <p>
+                    Recent customer and labour payments
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>Date</th>
+
+                        <th>Type</th>
+
+                        <th>Name</th>
+
+                        <th>Amount</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="paymentHistoryBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+    Billing Management System
+</footer>
+
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Billing App</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+<header class="app-header">
+
+    <div>
+        <h1>Billing App</h1>
+        <p>Customer & Worker Management</p>
+    </div>
+
+    <div class="status">
+        ● Online
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <!-- Page Title -->
+
+    <div class="page-heading">
+
+        <div>
+            <h2>Customer Bills</h2>
+            <p>Create and manage customer bills</p>
+        </div>
+
+        <button class="back-btn" onclick="goHome()">
+            ← Dashboard
+        </button>
+
+    </div>
+
+
+    <!-- Customer Bill Form -->
+
+    <section class="bill-box">
+
+        <div class="box-title">
+            <h3>New Customer Bill</h3>
+            <span>Customer Sale</span>
+        </div>
+
+
+        <div class="form-grid">
+
+            <!-- Date -->
+
+            <div class="form-group">
+                <label>Bill Date</label>
+
+                <input
+                    type="date"
+                    id="billDate"
+                >
+
+            </div>
+
+
+            <!-- Customer -->
+
+            <div class="form-group">
+                <label>Customer Name</label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Enter customer name"
+                >
+
+            </div>
+
+
+            <!-- Location -->
+
+            <div class="form-group">
+                <label>Customer Location</label>
+
+                <input
+                    type="text"
+                    id="customerLocation"
+                    placeholder="Enter customer location"
+                >
+
+            </div>
+
+
+            <!-- Feet -->
+
+            <div class="form-group">
+                <label>Total Feet</label>
+
+                <input
+                    type="number"
+                    id="totalFeet"
+                    placeholder="0"
+                    min="0"
+                >
+
+            </div>
+
+
+            <!-- Rate -->
+
+            <div class="form-group">
+                <label>Rate / Foot</label>
+
+                <input
+                    type="number"
+                    id="rate"
+                    placeholder="0"
+                    min="0"
+                >
+
+            </div>
+
+
+            <!-- Total -->
+
+            <div class="form-group">
+
+                <label>Total Bill</label>
+
+                <input
+                    type="number"
+                    id="totalBill"
+                    value="0"
+                    readonly
+                >
+
+            </div>
+
+
+            <!-- Paid -->
+
+            <div class="form-group">
+
+                <label>Paid / Received</label>
+
+                <input
+                    type="number"
+                    id="paid"
+                    placeholder="0"
+                    min="0"
+                >
+
+            </div>
+
+
+            <!-- Pending -->
+
+            <div class="form-group">
+
+                <label>Pending Amount</label>
+
+                <input
+                    type="number"
+                    id="pending"
+                    value="0"
+                    readonly
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- Bill Summary -->
+
+        <div class="bill-summary">
+
+            <div>
+                <span>Total Feet</span>
+                <strong id="summaryFeet">0</strong>
+            </div>
+
+            <div>
+                <span>Total Bill</span>
+                <strong id="summaryTotal">Rs. 0</strong>
+            </div>
+
+            <div>
+                <span>Received</span>
+                <strong id="summaryPaid">Rs. 0</strong>
+            </div>
+
+            <div>
+                <span>Pending</span>
+                <strong id="summaryPending">Rs. 0</strong>
+            </div>
+
+        </div>
+
+
+        <!-- Save -->
+
+        <div class="form-actions">
+
+            <button
+                class="save-btn"
+                onclick="saveBill()"
+            >
+                💾 Save Customer Bill
+            </button>
+
+            <button
+                class="clear-btn"
+                onclick="clearForm()"
+            >
+                Clear
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Customer Bills Table -->
+
+    <section class="bill-box">
+
+        <div class="box-title">
+
+            <div>
+                <h3>Customer Bill Records</h3>
+                <p>Saved bills will appear here</p>
+            </div>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>#</th>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Location</th>
+                        <th>Feet</th>
+                        <th>Rate</th>
+                        <th>Total</th>
+                        <th>Paid</th>
+                        <th>Pending</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="billTableBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    Billing Management System
+</footer>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>

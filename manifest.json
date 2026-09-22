@@ -1,0 +1,9 @@
+{
+    "name": "Billing Management App",
+    "short_name": "Billing App",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#f4f6f9",
+    "theme_color": "#111827",
+    "icons": []
+}

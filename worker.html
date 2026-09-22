@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Labour Management</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="app-header">
+
+    <div>
+
+        <h1>Billing App</h1>
+
+        <p>Customer & Worker Management</p>
+
+    </div>
+
+    <div class="status">
+        ● Online
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+    <!-- PAGE HEADING -->
+
+    <div class="page-heading">
+
+        <div>
+
+            <h2>Labour Management</h2>
+
+            <p>Worker feet, wages and payments</p>
+
+        </div>
+
+        <button
+            class="back-btn"
+            onclick="goCustomerBills()"
+        >
+            ← Customer Bills
+        </button>
+
+    </div>
+
+
+
+    <!-- WORKER SELECT -->
+
+    <section class="bill-box">
+
+        <div class="box-title">
+
+            <div>
+
+                <h3>New Labour Entry</h3>
+
+                <p>
+                    Select worker and enter customer work details
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+            <!-- WORKER -->
+
+            <div class="form-group">
+
+                <label>Worker</label>
+
+                <select
+                    id="workerName"
+                    onchange="setWorkerRate()"
+                >
+
+                    <option value="">
+                        Select Worker
+                    </option>
+
+                    <option value="Ahad">
+                        Ahad
+                    </option>
+
+                    <option value="Adeel">
+                        Adeel
+                    </option>
+
+                    <option value="Bilal">
+                        Bilal
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- DATE -->
+
+            <div class="form-group">
+
+                <label>Date</label>
+
+                <input
+                    type="date"
+                    id="labourDate"
+                >
+
+            </div>
+
+
+
+            <!-- CUSTOMER -->
+
+            <div class="form-group">
+
+                <label>Customer Name</label>
+
+                <input
+                    type="text"
+                    id="labourCustomer"
+                    placeholder="Customer name"
+                >
+
+            </div>
+
+
+
+            <!-- LOCATION -->
+
+            <div class="form-group">
+
+                <label>Customer Location</label>
+
+                <input
+                    type="text"
+                    id="labourLocation"
+                    placeholder="Location"
+                >
+
+            </div>
+
+
+
+            <!-- FEET -->
+
+            <div class="form-group">
+
+                <label>Total Feet</label>
+
+                <input
+                    type="number"
+                    id="labourFeet"
+                    placeholder="0"
+                    min="0"
+                >
+
+            </div>
+
+
+
+            <!-- RATE -->
+
+            <div class="form-group">
+
+                <label>Worker Rate / Foot</label>
+
+                <input
+                    type="number"
+                    id="workerRate"
+                    value="0"
+                    readonly
+                >
+
+            </div>
+
+
+
+            <!-- TOTAL -->
+
+            <div class="form-group">
+
+                <label>Total Labour</label>
+
+                <input
+                    type="number"
+                    id="labourTotal"
+                    value="0"
+                    readonly
+                >
+
+            </div>
+
+
+
+            <!-- CASH OUT -->
+
+            <div class="form-group">
+
+                <label>Cash Out / Paid</label>
+
+                <input
+                    type="number"
+                    id="labourPaid"
+                    placeholder="0"
+                    min="0"
+                >
+
+            </div>
+
+
+
+            <!-- PENDING -->
+
+            <div class="form-group">
+
+                <label>Pending Labour</label>
+
+                <input
+                    type="number"
+                    id="labourPending"
+                    value="0"
+                    readonly
+                >
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- SUMMARY -->
+
+        <div class="bill-summary">
+
+
+            <div>
+
+                <span>Worker</span>
+
+                <strong id="summaryWorker">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>Total Feet</span>
+
+                <strong id="summaryLabourFeet">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>Total Labour</span>
+
+                <strong id="summaryLabourTotal">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>Pending</span>
+
+                <strong id="summaryLabourPending">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- BUTTONS -->
+
+        <div class="form-actions">
+
+            <button
+                class="save-btn"
+                onclick="saveLabour()"
+            >
+                💾 Save Labour Entry
+            </button>
+
+
+            <button
+                class="clear-btn"
+                onclick="clearLabourForm()"
+            >
+                Clear
+            </button>
+
+        </div>
+
+
+    </section>
+
+
+
+
+    <!-- WORKER SUMMARY -->
+
+    <section class="bill-box">
+
+        <div class="box-title">
+
+            <div>
+
+                <h3>Worker Summary</h3>
+
+                <p>
+                    Total work and payment summary
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="worker-summary-grid">
+
+
+            <div class="worker-card">
+
+                <h3>Ahad</h3>
+
+                <p>Rate: Rs. 8 / foot</p>
+
+                <strong id="ahadSummary">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+
+
+            <div class="worker-card">
+
+                <h3>Adeel</h3>
+
+                <p>Rate: Rs. 10 / foot</p>
+
+                <strong id="adeelSummary">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+
+
+            <div class="worker-card">
+
+                <h3>Bilal</h3>
+
+                <p>Rate: Rs. 14 / foot</p>
+
+                <strong id="bilalSummary">
+                    Rs. 0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- RECORDS -->
+
+    <section class="bill-box">
+
+        <div class="box-title">
+
+            <div>
+
+                <h3>Labour Records</h3>
+
+                <p>
+                    Saved worker entries
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>Date</th>
+
+                        <th>Worker</th>
+
+                        <th>Customer</th>
+
+                        <th>Location</th>
+
+                        <th>Feet</th>
+
+                        <th>Rate</th>
+
+                        <th>Total</th>
+
+                        <th>Paid</th>
+
+                        <th>Pending</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="labourTableBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    Billing Management System
+
+</footer>
+
+
+
+<script src="app.js"></script>
+
+
+</body>
+
+</html>

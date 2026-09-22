@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Settings</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="app-header">
+
+    <div>
+
+        <h1>Billing App</h1>
+
+        <p>Control Panel</p>
+
+    </div>
+
+    <div class="status">
+        ● Settings
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+    <div class="page-heading">
+
+        <div>
+
+            <h2>Settings</h2>
+
+            <p>Manage your business and worker settings</p>
+
+        </div>
+
+        <button
+            class="back-btn"
+            onclick="goDashboard()"
+        >
+            ← Dashboard
+        </button>
+
+    </div>
+
+
+
+    <!-- BUSINESS SETTINGS -->
+
+    <section class="bill-box">
+
+        <div class="box-title">
+
+            <div>
+
+                <h3>Business Information</h3>
+
+                <p>
+                    This information will be used throughout the app
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+            <div class="form-group">
+
+                <label>Business Name</label>
+
+                <input
+                    type="text"
+                    id="businessName"
+                    placeholder="Enter business name"
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>Address</label>
+
+                <input
+                    type="text"
+                    id="businessAddress"
+                    placeholder="Enter business address"
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>WhatsApp</label>
+
+                <input
+                    type="text"
+                    id="businessWhatsApp"
+                    placeholder="03000000000"
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>Secondary Contact</label>
+
+                <input
+                    type="text"
+                    id="businessPhone"
+                    placeholder="03300000000"
+                >
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- WORKER SETTINGS -->
+
+    <section class="bill-box">
+
+        <div class="box-title">
+
+            <div>
+
+                <h3>Worker Rates</h3>
+
+                <p>
+                    Change labour rate per foot from one place
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+            <div class="form-group">
+
+                <label>Ahad — Rs. / Foot</label>
+
+                <input
+                    type="number"
+                    id="ahadRate"
+                    min="0"
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>Adeel — Rs. / Foot</label>
+
+                <input
+                    type="number"
+                    id="adeelRate"
+                    min="0"
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>Bilal — Rs. / Foot</label>
+
+                <input
+                    type="number"
+                    id="bilalRate"
+                    min="0"
+                >
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- CUSTOMER SETTINGS -->
+
+    <section class="bill-box">
+
+        <div class="box-title">
+
+            <div>
+
+                <h3>Customer Billing</h3>
+
+                <p>
+                    Default customer rate
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>Default Customer Rate / Foot</label>
+
+                <input
+                    type="number"
+                    id="defaultCustomerRate"
+                    min="0"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- SAVE -->
+
+    <section class="bill-box">
+
+        <div class="form-actions">
+
+            <button
+                class="save-btn"
+                onclick="saveSettings()"
+            >
+                💾 Save Settings
+            </button>
+
+
+            <button
+                class="clear-btn"
+                onclick="resetSettings()"
+            >
+                Reset Defaults
+            </button>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+    Billing Management System
+</footer>
+
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
